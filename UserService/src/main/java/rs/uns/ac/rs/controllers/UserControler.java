@@ -1,5 +1,9 @@
 package rs.uns.ac.rs.controllers;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -8,11 +12,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.netflix.client.http.HttpRequest;
+
+import org.json.simple.JSONObject;
 import rs.uns.ac.rs.models.User;
 import rs.uns.ac.rs.services.UserService;
 
@@ -56,11 +66,25 @@ public class UserControler extends AbstractRESTController<User, String>{
 	}
 	
 	
+	@RequestMapping(value="/users",method=RequestMethod.GET)
+	public List<User> getUsers(@RequestHeader("Authorization") String authorization)
+	{
+		System.out.println("getUsers method authorization token : " + authorization);
+		return userService.getAllUsers();
+	}
+
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public User login(
+	public @ResponseBody JSONObject login(
 			@RequestParam(name = "mail") String mail,
 			@RequestParam(name = "password") String password){
-		return userService.login(mail, password);
+		User loggedIn= userService.login(mail, password);
+		if (loggedIn!=null)
+		{
+			return userService.getTokenForUser(loggedIn);
+		}
+		return null;
 	}
+	
 	
 }

@@ -25,11 +25,12 @@ public class IndexController {
     @RequestMapping("/SMPuOS")
     void home(HttpServletRequest req, HttpServletResponse resp){
         try {
-            RequestDispatcher rd = req.getRequestDispatcher("/index.html");
+        	System.out.println("SmPUos");
+            //RequestDispatcher rd = req.getRequestDispatcher("http://www.google.com");
+        	RequestDispatcher rd = req.getRequestDispatcher("/index.html");
             rd.forward(req, resp);
+            //resp.sendRedirect("http://localhost:8085/smpuos/SMPuOS/home");
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ServletException e) {
             e.printStackTrace();
         } catch (Exception e){
             e.printStackTrace();
