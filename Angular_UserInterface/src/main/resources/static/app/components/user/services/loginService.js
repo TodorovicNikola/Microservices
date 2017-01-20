@@ -1,6 +1,6 @@
 
-var loginService= angular.module('app.loginService', ['ngStorage']);
-loginService.factory('loginService', ['$http','$localStorage',function($http,$localStorage) {
+var loginService= angular.module('app.loginService', ['ngStorage','angular-jwt']);
+loginService.factory('loginService', ['jwtHelper','$http','$localStorage',function(jwtHelper,$http,$localStorage) {
 
 	var service = {};
 
@@ -9,18 +9,25 @@ loginService.factory('loginService', ['$http','$localStorage',function($http,$lo
 		$http({
 			method: 'GET',
 			url: '/user-service/login?mail='+ email+ "&password="+password,
-			
+
 		}).success(function(response)
 				{
 			if (response) {
-				console.log("response" + response);
-				var currentUser = { email: email, token: response }
-				
-				$localStorage.currentUser = currentUser;
-				$localStorage.token='Bearer '+response['token'];
-				$http.defaults.headers.common.Authorization = $localStorage.token;
-				console.log(response);
-				// callback za uspesan login
+				console.log(response);			
+				var tokenPayload = jwtHelper.decodeToken(response['token']);
+				//console.log("Token payload je  ");
+				//console.log(tokenPayload); 
+				if(tokenPayload.role){
+					//console.log("Role in payload true")
+					var currentUser={};
+					currentUser.role = tokenPayload.role;
+					currentUser.firstName=tokenPayload.firstName;
+					currentUser.lastName=tokenPayload.lastName;
+					$localStorage.currentUser = currentUser;
+					//$localStorage.token='Bearer '+response['token'];
+					$localStorage.token=response['token'];
+					$http.defaults.headers.common.Authorization = $localStorage.token;
+				}	
 				callback(true);
 			} else {
 
@@ -39,7 +46,6 @@ loginService.factory('loginService', ['$http','$localStorage',function($http,$lo
 
 
 	function logout() {
-		// uklonimo korisnika iz lokalnog skladišta
 		delete $localStorage.currentUser;
 		delete $localStorage.token;
 		$http.defaults.headers.common.Authorization = '';

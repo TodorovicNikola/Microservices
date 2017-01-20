@@ -8,11 +8,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,6 +71,7 @@ public class UserControler extends AbstractRESTController<User, String>{
 	}
 	
 	
+	
 	@RequestMapping(value="/users",method=RequestMethod.GET)
 	public List<User> getUsers(@RequestHeader("Authorization") String authorization)
 	{
@@ -86,5 +92,23 @@ public class UserControler extends AbstractRESTController<User, String>{
 		return null;
 	}
 	
+	
+	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+	public @ResponseBody Object registerUser(@RequestBody @Valid  User user,@RequestHeader("Authorization") String authorization){
+		
+		//check if role is admin
+		String role=userService.getUserRoleFromToken(authorization);
+		if (!role.equals("admin"))
+		{
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+		}
+		System.out.println(user.getFirstName());
+		if (userService.registerUser(user)!=null)
+			return new ResponseEntity<>(HttpStatus.OK);
+		return null;
+		
+	}
+	
+
 	
 }

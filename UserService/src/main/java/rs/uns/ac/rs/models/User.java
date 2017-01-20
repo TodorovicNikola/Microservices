@@ -4,6 +4,10 @@ package rs.uns.ac.rs.models;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
@@ -18,11 +22,15 @@ public class User implements Serializable{
 	@Id
 	private String id;
 	@Indexed
+	@NotNull(message="First name  of at least 3 letters is mandatory")
+	@Size(min=3)
 	private String firstName;
 	private String lastName;
-	private String userName;
+	@NotNull
 	private String password;
+	@NotNull
 	private String mail;
+	private String role;
 
 	public User(){
 		
@@ -32,16 +40,24 @@ public class User implements Serializable{
 		this.id = id;
 	}
 	
-	public User(String id, String firstName, String lastName, String userName, String password, String mail,
-			Integer age, Boolean active, GeoJsonPoint userLocation, Date dateOfBirth) {
+	public User(String id, String firstName, String lastName, String userName, String password, String mail,String role) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.userName = userName;
+	
 		this.password = password;
+		this.role=role;
 		this.mail = mail;
 
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public String getId() {
@@ -68,13 +84,6 @@ public class User implements Serializable{
 		this.lastName = lastName;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
 
 	public String getPassword() {
 		return password;
@@ -106,7 +115,6 @@ public class User implements Serializable{
 		result = prime * result + ((mail == null) ? 0 : mail.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 
-		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		return result;
 	}
 
@@ -144,19 +152,13 @@ public class User implements Serializable{
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		
-		if (userName == null) {
-			if (other.userName != null)
-				return false;
-		} else if (!userName.equals(other.userName))
-			return false;
+
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", password=" + password + ", mail=" + mail;
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", password=" + password + ", mail=" + mail;
 	
 	}
 }

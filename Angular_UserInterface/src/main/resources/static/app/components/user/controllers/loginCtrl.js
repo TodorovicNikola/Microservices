@@ -16,8 +16,8 @@
 		};
 		function loginCbck(success) {
 			if (success) {
-				console.log("success");
-				
+
+				console.log(loginService.getCurrentUser());
 				window.location = "#/users";
 			}
 			else{

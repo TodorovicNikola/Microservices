@@ -1,0 +1,59 @@
+<div class="container">
+
+	<form class="form-horizontal" role="form">
+
+		<div class="form-group row">
+			<label for="inputEmail3" class="col-sm-2 form-control-label">User
+				type: </label>
+			<div class="col-sm-4">
+				<select class="form-control" ng-model="user.role"
+					ng-selected="regular"
+					ng-options="userRole for userRole in userRoles">
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="inputEmail3" class="col-sm-2 form-control-label">First
+				name: <span ng-hide="user.firstName"> (Required)</span>
+			</label>
+			<div class="col-sm-4">
+				<input class="form-control" id="firstNameId"
+					ng-model="user.firstName">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputEmail3" class="col-sm-2 form-control-label">Last
+				name: <span ng-hide="user.lastName"> (Required)</span>
+			</label>
+			<div class="col-sm-4">
+				<input class="form-control" id="lastNameId" ng-model="user.lastName">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="inputEmail3" class="col-sm-2 form-control-label">E-Mail:
+				<span ng-hide="user.mail"> (Required)</span>
+			</label>
+			<div class="col-sm-4">
+				<input class="form-control" id="emailId" ng-model="user.mail">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<label for="inputEmail3" class="col-sm-2 form-control-label">Password:
+				<span ng-hide="user.password"> (Required)</span>
+			</label>
+			<div class="col-sm-4">
+				<input class="form-control" id="passwordId" type="password"
+					ng-model="user.password">
+			</div>
+		</div>
+		<br> <br>
+
+		<button type="button" ng-click="saveUser()"
+			ng-disabled="!validateUserForm()" class="btn btn-primary"
+			data-dismiss="modal">Create</button>
+
+	</form>
+</div>
