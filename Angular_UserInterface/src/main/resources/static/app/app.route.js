@@ -24,12 +24,20 @@
 			templateUrl: 'app/components/user/views/users.html',
 			controller: 'usersCtrl',
 			controllerAs: 'uc'
+				
 		}).state('registerUser', {
 			url: '/registerUser',
 			templateUrl: 'app/components/user/views/registerUser.html',
 			controller: 'usersCtrl',
 			controllerAs: 'uc'
-		})
+				
+		}).state('createObavOIntProv', {
+			url: '/createObavOIntProv',
+			templateUrl: 'app/components/obavOIntProv/createObavOIntProv.html',
+			controller: 'createObavOIntProvCtrl',
+			controllerAs: 'coip'
+				
+		});
 	}]);
 
 	})();

@@ -84,6 +84,9 @@ public class UserControler extends AbstractRESTController<User, String>{
 	public @ResponseBody JSONObject login(
 			@RequestParam(name = "mail") String mail,
 			@RequestParam(name = "password") String password){
+		
+		System.out.println("Login users");
+		
 		User loggedIn= userService.login(mail, password);
 		if (loggedIn!=null)
 		{
