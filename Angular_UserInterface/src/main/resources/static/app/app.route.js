@@ -29,7 +29,24 @@
 			templateUrl: 'app/components/user/views/registerUser.html',
 			controller: 'usersCtrl',
 			controllerAs: 'uc'
-		})
+		}).state('documents', {
+			url: '/documents',
+			templateUrl: 'app/components/document/views/documents.html',
+			controller: 'documentsCtrl',
+			controllerAs: 'dc'
+		}).state('documentId', {
+			url: '/documents/:id',
+			templateUrl:  'app/components/document/views/documentView.html',
+			controller: 'documentDetailCtrl',
+			controllerAs: 'dc'
+	    })
+	    .state('createDocument', {
+			url: '/createDocument',
+			templateUrl:  'app/components/document/views/documentView.html',
+			controller: 'documentDetailCtrl',
+			controllerAs: 'ddc'
+	    })
+		
 	}]);
 
 	})();
