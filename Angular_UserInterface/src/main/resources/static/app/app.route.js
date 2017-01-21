@@ -30,10 +30,16 @@
 			templateUrl: 'app/components/user/views/registerUser.html',
 			controller: 'usersCtrl',
 			controllerAs: 'uc'
+
+		}).state('crProgIPlIntProvCtrl', {
+			url: '/crProgIPlIntProvCtrl',
+			templateUrl: 'app/components/progrIPlanIntProv/views/createProgrIPlanIntProv.html',
+			controller: 'crProgIPlIntProvCtrl',
+			controllerAs: 'cpipp'		
 				
 		}).state('createObavOIntProv', {
 			url: '/createObavOIntProv',
-			templateUrl: 'app/components/obavOIntProv/createObavOIntProv.html',
+			templateUrl: 'app/components/obavOIntProv/views/createObavOIntProv.html',
 			controller: 'createObavOIntProvCtrl',
 			controllerAs: 'coip'
 				
