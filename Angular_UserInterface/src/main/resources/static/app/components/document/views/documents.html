@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="docs">
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Oznaka</th>	
+					<th>Naslov</th>
+					<th>Opis</th>
+					<th>Rok</th>
+					<th>Autor</th>
+					<th>Datum</th>
+					<th></th>
+					
+				</tr>
+			</thead>
+			<tbody ng-repeat="doc in data">
+			</tr>
+			<tr>
+				<td><a href="#documents/{{doc.id}}">{{doc.taskMark}}</a></td>
+				<td>{{doc.taskTitle}}</td>
+				<td>{{doc.taskDescription}}</td>
+				<!-- <td>{{doc.taskCarrier}}</td>
+				<td>{{doc.taskTeam}}</td>
+				<td>{{doc.taskTemplates}}</td>
+				<td>{{doc.taskDeliveredTo}}</td> -->
+				<td>{{getReadableDateTime(doc.taskDueDate)}}</td>
+				<td>{{doc.taskCreatedBy}}</td>
+				<td>{{getReadableDateTime(doc.taskDate)}}</td>
+				<td><button class="btn-primary" ng-click=deleteDoc(doc.id,$index)>Delete</button>
+			</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>
+

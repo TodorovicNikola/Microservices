@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="docView">
+
+		<h3>Dokument : {{doc.taskMark}} </h3><br> <br>
+		<form>
+			Oznaka
+			<input class="form-control" ng-model="doc.taskMark" placeholder="Oznaka" ng-disabled="documentId">
+			Naslov
+			<input class="form-control" ng-model="doc.taskTitle" placeholder="Naslov">
+			Opis:
+			<textarea  class="form-control" rows="6" ng-model="doc.taskDescription"></textarea>
+			Nosilac zadatka
+			<input class="form-control"  ng-model="doc.taskCarrier" ng-disabled="documentId">
+			Clanovi tima:
+
+			<input class="form-control" id="teamMember1" ng-model="teamMember1" placeholder="Clan" >		
+			<input class="form-control" id="teamMember1" ng-model="teamMember2" placeholder="Clan" >
+			<input class="form-control" id="teamMember1" ng-model="teamMember3" placeholder="Clan" >
+			
+			
+			<!-- <div ng-repeat="template in doc.taskTemplates">
+				<input class="form-control" ng-model="template">
+			</div> -->
+			Podloge za resavanje zadatka:
+			<input class="form-control" id="templateMember1" ng-model="templateMember1" placeholder="Podloga dokument" ng-disabled="documentId">
+			<input class="form-control" id="templateMember2" ng-model="templateMember2" placeholder="Podloga dokument" ng-disabled="documentId">
+			<input class="form-control" id="templateMember3" ng-model="templateMember3" placeholder="Podloga dokument" ng-disabled="documentId">
+			<input class="form-control" id="templateMember4" ng-model="templateMember4" placeholder="Podloga dokument" ng-disabled="documentId">
+			 
+			Delivering to:
+			<input class="form-control" id="taskDeliveredToMember1" ng-model="taskDeliveredTo1" placeholder="Primalac" ng-disabled="documentId">
+			<input class="form-control" id="taskDeliveredToMember2" ng-model="taskDeliveredTo2" placeholder="Primalac" ng-disabled="documentId">
+			<input class="form-control" id="taskDeliveredToMember3" ng-model="taskDeliveredTo3" placeholder="Primalac" ng-disabled="documentId">
+			Rok: <button ng-click="dummyDatum()" ng-disabled="documentId">Dummy datum</button>
+			 <input class="form-control" ng-model="dueDateView" ng-disabled="documentId">
+			Created by:
+			<input class="form-control" ng-model="doc.taskCreatedBy"  ng-disabled="true" >
+			Datum (Trenutno vreme ce biti iskorisceno pri kreiranju):
+			<input class="form-control" ng-model="dateView"  ng-disabled="true">
+			<br>
+			<button class="btn btn-primary" type="button" ng-click="saveDocument()" ng-disabled="documentId" >Zapamti</button>
+			<button class="btn btn-primary" type="button" ng-click="updateDocument()" ng-disabled="!documentId || doc.status=='zavrsen'" >Izmeni</button>
+		</form>
+	</div>
+</div>
+
