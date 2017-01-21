@@ -24,11 +24,29 @@
 			templateUrl: 'app/components/user/views/users.html',
 			controller: 'usersCtrl',
 			controllerAs: 'uc'
+				
 		}).state('registerUser', {
 			url: '/registerUser',
 			templateUrl: 'app/components/user/views/registerUser.html',
 			controller: 'usersCtrl',
 			controllerAs: 'uc'
+		}).state('createPregledProvCtrl', {
+			url: '/createPregledProv',
+			templateUrl: 'app/components/pregledProveravaca/views/createPregledProv.html',
+			controller: 'createPregledProvCtrl',
+			controllerAs: 'cppc'
+				
+		}).state('crProgIPlIntProvCtrl', {
+			url: '/crProgIPlIntProv',
+			templateUrl: 'app/components/progrIPlanIntProv/views/createProgrIPlanIntProv.html',
+			controller: 'crProgIPlIntProvCtrl',
+			controllerAs: 'cpipp'		
+				
+		}).state('createObavOIntProv', {
+			url: '/createObavOIntProv',
+			templateUrl: 'app/components/obavOIntProv/views/createObavOIntProv.html',
+			controller: 'createObavOIntProvCtrl',
+			controllerAs: 'coip'
 		}).state('documents', {
 			url: '/documents',
 			templateUrl: 'app/components/document/views/documents.html',
@@ -45,8 +63,8 @@
 			templateUrl:  'app/components/document/views/documentView.html',
 			controller: 'documentDetailCtrl',
 			controllerAs: 'ddc'
-	    })
-		
+	    });
 	}]);
 
 	})();
+

@@ -9,24 +9,74 @@
 		<script type="text/javascript" src ="./bower_components/angular-ui-router/release/angular-ui-router.js" ></script>
 		<script type="text/javascript" src="./bower_components/ngstorage/ngStorage.js"></script>
 		<script type="text/javascript" src="./bower_components/angular-jwt/dist/angular-jwt.js"></script>
-	
-		<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css" >
-		<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap-theme.css" >
-		<script type="text/javascript" src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 		
+		<script type="text/javascript" src="./bower_components/jquery/dist/jquery.js"></script>
+		<script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
 		
-			
+		<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap-theme.css" />
+
 
 	</head>
 
-	<body ng-app="SMPuOS">
-	<div ng-controller='appController'>
-	<li ng-show="getCurrentUser()==null"><a href="#login">Login</a></li>
-	<li ng-show="getCurrentUser()!=null"><a ng-click="logout()">Logout</a></li>
-	<li ng-show="getCurrentUser()!=null"><a href="#registerUser">Register user</a></li>
-	</div>
-		Hello World
-		<div class="container">
+	<body ng-app="SMPuOS" ng-controller='appController'>
+		 <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/smpuos/SMPuOS" class="navbar-brand">Zaštita životne sredine</a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+              
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="" id="themes">Dokumenti
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="themes">
+                                <li>
+                                    <a ui-sref="createObavOIntProv">Obaveštenje o internoj proveri</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a ui-sref="crProgIPlIntProvCtrl">Program i plan interne provere</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a ui-sref="createPregledProvCtrl">Lista proveravaca</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#documents">Zadaci za izradu dokumenata</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#createDocument">Kreiraj zadatak za izradu dokumenta</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+	                    <ul class="nav navbar-nav navbar-right">
+	                  
+	                    <li ng-show="getCurrentUser()==null">
+	                    	<a href="#login">Prijava</a>
+	                   	</li>
+						<li ng-show="getCurrentUser()!=null">
+							<a ng-click="logout()">Odjava</a>
+						</li>
+						<li ng-show="getCurrentUser()!=null">
+							<a href="#registerUser">Registruj korisnika</a>
+						</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+		<div class="container" style="position:relative; top:50px;">
+		 
 			<ui-view></ui-view>
 		</div>
 		
@@ -36,10 +86,16 @@
 				<script type="text/javascript" src ="./app/components/user/controllers/usersCtrl.js" ></script>
 				<script type="text/javascript" src ="./app/components/user/services/loginService.js" ></script>
 				<script type="text/javascript" src ="./app/components/home/home.controller.js" ></script>
-				<script type="text/javascript" src ="./app/components/document/controllers/documentsCtrl.js" ></script>
+				<script type="text/javascript" src ="./app/components/obavOIntProv/controllers/createObavOIntProv.js" ></script>
+				<script type="text/javascript" src ="./app/components/progrIPlanIntProv/controllers/createProgrIPlanIntProv.js" ></script>
+				<script type="text/javascript" src ="./app/components/pregledProveravaca/controllers/createPregledProv.js" ></script>
+				<script type="text/javascript" src ="./app/appCtrl.js" ></script>
+				<script type="text/javascript" src ="./site.js" ></script>
+					<script type="text/javascript" src ="./app/components/document/controllers/documentsCtrl.js" ></script>
 				<script type="text/javascript" src ="./app/components/document/controllers/documentDetailCtrl.js" ></script>
 				
-				<script type="text/javascript" src ="./app/appCtrl.js" ></script>
+		
+
 				
 		
 	<body>
