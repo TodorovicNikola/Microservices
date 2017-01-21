@@ -31,8 +31,14 @@
 			controller: 'usersCtrl',
 			controllerAs: 'uc'
 
+		}).state('createPregledProvCtrl', {
+			url: '/createPregledProv',
+			templateUrl: 'app/components/pregledProveravaca/views/createPregledProv.html',
+			controller: 'createPregledProvCtrl',
+			controllerAs: 'cppc'
+				
 		}).state('crProgIPlIntProvCtrl', {
-			url: '/crProgIPlIntProvCtrl',
+			url: '/crProgIPlIntProv',
 			templateUrl: 'app/components/progrIPlanIntProv/views/createProgrIPlanIntProv.html',
 			controller: 'crProgIPlIntProvCtrl',
 			controllerAs: 'cpipp'		
