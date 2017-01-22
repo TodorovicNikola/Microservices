@@ -1,0 +1,48 @@
+<div>
+
+	   <h2>Obavestenje o internoj proveri</h2>
+	   
+		<dl>
+			<dt>Oznaka: </dt>
+			<dd style="padding-left:5em">{{ oip.obavOIntProv.oznaka }}</dd>
+			<br />
+			<dt >Datum: </dt>
+			<dd style="padding-left:5em">{{ oip.obavOIntProv.datum }}</dd>
+			<br />
+			<dt>Vrsta provere </dt>
+			<dd style="padding-left:5em">{{ oip.obavOIntProv.vrstaProvere }}</dd>
+			<br />
+			<dt>Po zahtevu broj: </dt>
+			<br />
+			<dd style="padding-left:5em">{{ oip.obavOIntProv.poZahtevuBr }}</dd>
+			<dt>Organizaciona jedinica: </dt>
+			<dd style="padding-left:5em">{{ oip.obavOIntProv.orgJedinica }}</dd>
+			<br />
+			<dt>Nadlezni rukovodilac: </dt>
+			<dd style="padding-left:5em">{{ oip.obavOIntProv.nadlezniRuk }}</dd>
+			<br />
+			<dt>Datum od: </dt>
+			<dd style="padding-left:5em">{{ oip.obavOIntProv.datumOd }}</dd>
+			<br />
+			<dt>Datum do: </dt>
+			<dd style="padding-left:5em">{{ oip.obavOIntProv.datumDo }}</dd>
+			<br />
+			<dt>Zahtevana dokumentacija: </dt>
+			<dd style="padding-left:5em">{{ oip.obavOIntProv.zahtDok }}</dd>
+		</dl>
+		
+		<hr />
+		
+    <h3>Tima za proveru</h3>
+    <table class="table table-striped table-hover" id="timZaProveru">
+		<tr style="font-weight: bold; font-size:118%">
+			<td>Ime i prezime</td><td>Funkcija</td>
+		</tr>
+		<tr ng-repeat="proveravac in oip.obavOIntProv.timZaProveru">
+			<td>{{ proveravac.imeIPrezime }}</td><td>{{ proveravac.funkcija }}</td>
+		</tr>
+    </table>
+	   
+	   <hr />
+	<button ng-show="!oip.obavOIntProv.verifikovan" class="btn btn-success" ng-click="oip.verify()">Verifikovan</button>
+</div>

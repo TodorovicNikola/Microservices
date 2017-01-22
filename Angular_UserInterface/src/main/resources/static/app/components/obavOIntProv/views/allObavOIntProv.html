@@ -8,7 +8,7 @@
 			<td>Oznaka</td><td>Vrsta Provere</td><td>Org. jedinica</td><td>Po zahtevu broj</td><td>Nadlezni rukovodilac</td><td>Do datuma</td><td></td><td></td>
 
 		</tr>
-		<tr class="trSelectable" ng-repeat="oip in aoip.obavestenja" ng-click="apipip.odaberi(pipip.id)">
+		<tr class="trSelectable" ng-repeat="oip in aoip.obavestenja" ng-click="aoip.odaberi(oip.id)">
 			<td>
 				{{oip.oznaka}}
 			</td>
@@ -29,8 +29,8 @@
 			</td>
 
 			
-			<td><a href="" ng-click="aoip.izmeni(oip.id)">Izmeni</a></td>
-			<td><a href="" ng-click="aoip.obrisi(oip.id)">Obrisi</a></td>
+			<td><a ng-show="!oip.verifikovan" href="" ng-click="aoip.izmeni(oip.id)">Izmeni</a></td>
+			<td><a ng-show="!oip.verifikovan" href="" ng-click="aoip.obrisi(oip.id)">Obrisi</a></td>
 			
 		</tr>	
 	</table>
