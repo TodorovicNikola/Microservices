@@ -4,7 +4,9 @@
 
 	var loginController = [ '$scope', '$http','loginService','$location',function ($scope, $http,loginService,$location){
 
-
+		if (loginService.getCurrentUser()!=null)
+			window.location = "#documents";
+		
 		$scope.user={
 				email: "",
 				password: ""

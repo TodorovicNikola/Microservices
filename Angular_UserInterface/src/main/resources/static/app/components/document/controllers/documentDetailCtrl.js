@@ -6,10 +6,8 @@
 		
 		$scope.writeAuthor=function()
 		{
-
 			var user=$localStorage.currentUser;
-			return user.firstName + " " + user.lastName;
-
+			return user==null?"":(user.firstName + " " + user.lastName);
 		}
 		
 		

@@ -55,7 +55,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="#createDocument">Kreiraj zadatak za izradu dokumenta</a>
+                                    <a href="#qualityDocuments">Dokumenti upravljanja kvalitetom</a>
                                 </li>
                             </ul>
                         </li>
@@ -68,7 +68,7 @@
 						<li ng-show="getCurrentUser()!=null">
 							<a ng-click="logout()">Odjava</a>
 						</li>
-						<li ng-show="getCurrentUser()!=null">
+						<li ng-show="getCurrentUser()!=null && getCurrentUser().role=='admin'">
 							<a href="#registerUser">Registruj korisnika</a>
 						</li>
                     </ul>
@@ -91,9 +91,10 @@
 				<script type="text/javascript" src ="./app/components/pregledProveravaca/controllers/createPregledProv.js" ></script>
 				<script type="text/javascript" src ="./app/appCtrl.js" ></script>
 				<script type="text/javascript" src ="./site.js" ></script>
-					<script type="text/javascript" src ="./app/components/document/controllers/documentsCtrl.js" ></script>
+				<script type="text/javascript" src ="./app/components/document/controllers/documentsCtrl.js" ></script>
 				<script type="text/javascript" src ="./app/components/document/controllers/documentDetailCtrl.js" ></script>
-				
+				<script type="text/javascript" src ="./app/components/documentKvalitet/controllers/documentsQualityCtrl.js" ></script>
+				<script type="text/javascript" src ="./app/components/documentKvalitet/controllers/documentQualityDetailCtrl.js" ></script>
 		
 
 				

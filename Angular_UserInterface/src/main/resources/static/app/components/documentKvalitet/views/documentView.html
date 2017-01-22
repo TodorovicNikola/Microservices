@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="docView">
+
+		<h4>Pregled dokumenata sistema upravljanja kvalitetom : {{doc.docMark}} </h4><br>
+		<form>
+			Oznaka:
+			<input class="form-control" ng-model="doc.docMark" placeholder="Oznaka"  ng-disabled="!(getCurrentUser().role=='Sekretar')">
+			Datum vazenja:
+			<input class="form-control" ng-model="doc.docDate" placeholder="Datum vazenja"  ng-disabled= "!(getCurrentUser().role=='Sekretar')" >
+			
+			<br>
+			
+			Dokumenti: 
+			<br>
+			<button type="button" class="btn btn-primary" ng-click="addRowForItem()">Dodaj</button>
+			<table  class="table" >
+			<thead>
+				<th>Oznaka</th><th>Naziv</th><th>Izdanje</th><th>Datum usvajanja</th><th>Korisnici</th><th>Deletion</th>
+			</thead>
+			<tbody id="qualityItems">
+			</tbody>
+			</table>
+			
+			<button class="btn btn-primary" type="button" ng-click="saveDocument()" ng-disabled="documentId" ng-show="getCurrentUser().role=='Sekretar'">Zapamti</button>
+			<button class="btn btn-primary" type="button" ng-click="updateDocument()" ng-disabled="!documentId"   ng-show="getCurrentUser().role=='Sekretar'">Izmeni</button>
+		</form>
+	</div>
+</div>
+

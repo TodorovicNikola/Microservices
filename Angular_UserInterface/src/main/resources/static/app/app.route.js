@@ -63,7 +63,23 @@
 			templateUrl:  'app/components/document/views/documentView.html',
 			controller: 'documentDetailCtrl',
 			controllerAs: 'ddc'
-	    });
+	    }).state('createQualityDocument', {
+			url: '/createQualityDocument',
+			templateUrl:  'app/components/documentKvalitet/views/documentView.html',
+			controller: 'documentQualityDetailCtrl',
+			controllerAs: 'dqdc'
+	    }).state('qualityDocuments', {
+			url: '/qualityDocuments',
+			templateUrl:  'app/components/documentKvalitet/views/documents.html',
+			controller: 'documentsQualityCtrl',
+			controllerAs: 'qc'
+	    }).state('qualityDocumentId', {
+			url: '/qualityDocuments/:id',
+			templateUrl:  'app/components/documentKvalitet/views/documentView.html',
+			controller: 'documentQualityDetailCtrl',
+			controllerAs: 'dqdc'
+	    })
+	    ;
 	}]);
 
 	})();

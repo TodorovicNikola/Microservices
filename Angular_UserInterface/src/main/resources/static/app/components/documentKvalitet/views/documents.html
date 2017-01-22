@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="docsQuality">
+	<h4>Pregled dokumenata sistema upravljanja kvalitetom : {{doc.docMark}} </h4><br>
+<br>
+	<a class="btn btn-primary" a href="#createQualityDocument">Kreiraj pregled dokumenata sistema upravljanja kvalitetom</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Oznaka</th>	
+					<th>Datum vazenja</th>
+					<th></th>
+					
+				</tr>
+			</thead>
+			<tbody ng-repeat="doc in data">
+			</tr>
+			<tr>
+				<td><a href="#qualityDocuments/{{doc.id}}">{{doc.docMark}}</a></td>
+				<td>{{getReadableDateTime(doc.docDate)}}</td>
+				<td><button class="btn-primary" ng-click=deleteDoc(doc.id,$index)>Delete</button>
+			</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>
+
