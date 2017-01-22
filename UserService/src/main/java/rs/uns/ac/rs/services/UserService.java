@@ -6,10 +6,9 @@ import java.util.List;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -50,6 +49,7 @@ public class UserService extends AbstractCRUDService<User, String>{
 		return null;
 	}
 
+	@SuppressWarnings( "unchecked" )
 	public JSONObject getTokenForUser(User user)
 	{
 		try{
@@ -59,16 +59,16 @@ public class UserService extends AbstractCRUDService<User, String>{
 			payload.put("firstName", user.getFirstName());
 			payload.put("lastName",user.getLastName());
 			payload.put("role", user.getRole());
+			payload.put("id", user.getId());
 			String jwt = (Jwts.builder().setPayload(payload.toJSONString()).signWith(SignatureAlgorithm.HS512, smpos).compact());
 			JSONObject retVal=new JSONObject();
 			retVal.put("token",jwt);
-			System.out.println("jwt " + jwt);
 
 			return retVal;
 		}
 		catch (Exception e)
 		{
-			System.out.println("null je nesto vrv");
+
 			return null;
 		}
 
@@ -83,8 +83,30 @@ public class UserService extends AbstractCRUDService<User, String>{
 		
 	}
 	
+	public String getUserIdFromToken(String token)
+	{
+		byte[] encodedBytes = Base64.encodeBase64("smpos".getBytes());
+		String key = new String(encodedBytes);
+		String id= (String) Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody().get("id");
+		return id;
+		
+	}
+	
 	public List<User> getAllUsers(){
 		return userRepository.findAll();
+	}
+	
+	public User getOneUserByFirstAndLastName(String firstName,String lastName)
+	{
+		List<User> users=userRepository.findByFirstNameAndLastName(firstName, lastName);
+		if (users==null || users.size()==0)
+		{
+			return null;
+		}
+		else
+		{
+			return users.get(0);
+		}
 	}
 
 

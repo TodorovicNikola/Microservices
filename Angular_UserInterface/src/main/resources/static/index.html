@@ -20,7 +20,7 @@
 
 	</head>
 
-	<body ng-app="SMPuOS" > <!-- ng-controller='appController' -->
+	<body ng-app="SMPuOS" ng-controller='appController'>
 		 <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -31,6 +31,7 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
+              
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
@@ -51,11 +52,11 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="">Aleksa 1</a>
+                                    <a href="#documents">Zadaci za izradu dokumenata</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="">Aleksa 1</a>
+                                    <a href="#qualityDocuments">Dokumenti upravljanja kvalitetom</a>
                                 </li>
                             </ul>
                         </li>
@@ -68,7 +69,7 @@
 						<li ng-show="getCurrentUser()!=null">
 							<a ng-click="logout()">Odjava</a>
 						</li>
-						<li ng-show="getCurrentUser()!=null">
+						<li ng-show="getCurrentUser()!=null && getCurrentUser().role=='admin'">
 							<a href="#registerUser">Registruj korisnika</a>
 						</li>
                     </ul>
@@ -76,6 +77,7 @@
             </div>
         </div>
 		<div class="container" style="position:relative; top:50px;">
+		 
 			<ui-view></ui-view>
 		</div>
 		
@@ -97,6 +99,12 @@
 				<script type="text/javascript" src ="./app/components/obavOIntProv/controllers/allObavOIntProv.js" ></script>
 				<script type="text/javascript" src ="./app/components/obavOIntProv/controllers/obavOIntProv.js" ></script>
 				<script type="text/javascript" src ="./app/components/obavOIntProv/controllers/updObavOIntProv.js" ></script>				
+				<script type="text/javascript" src ="./app/components/document/controllers/documentsCtrl.js" ></script>
+				<script type="text/javascript" src ="./app/components/document/controllers/documentDetailCtrl.js" ></script>
+				<script type="text/javascript" src ="./app/components/documentKvalitet/controllers/documentsQualityCtrl.js" ></script>
+				<script type="text/javascript" src ="./app/components/documentKvalitet/controllers/documentQualityDetailCtrl.js" ></script>
 				
+				
+		
 	<body>
 </html>

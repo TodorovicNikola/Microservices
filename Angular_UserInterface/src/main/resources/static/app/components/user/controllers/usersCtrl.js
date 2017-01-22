@@ -56,7 +56,7 @@
 		}
 
 
-		$scope.userRoles=['regular','moderator'];
+		$scope.userRoles=['Sekretar','Predstavnik','Posmatrac'];
 		$scope.getData();
 
 	}];

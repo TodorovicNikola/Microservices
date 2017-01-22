@@ -30,7 +30,6 @@
 			templateUrl: 'app/components/user/views/registerUser.html',
 			controller: 'usersCtrl',
 			controllerAs: 'uc'
-
 		}).state('createPregledProvCtrl', {
 			url: '/createPregledProv',
 			templateUrl: 'app/components/pregledProveravaca/views/createPregledProv.html',
@@ -79,7 +78,6 @@
 			templateUrl: 'app/components/obavOIntProv/views/createObavOIntProv.html',
 			controller: 'createObavOIntProvCtrl',
 			controllerAs: 'coip'
-		
 		}).state('updObavOIntProv', {
 			url: '/updObavOIntProv',
 			templateUrl: 'app/components/obavOIntProv/views/updObavOIntProv.html',
@@ -97,9 +95,38 @@
 			templateUrl: 'app/components/obavOIntProv/views/allObavOIntProv.html',
 			controller: 'allObavOIntProvCtrl',
 			controllerAs: 'aoip'
-				
-	
+		}).state('documents', {
+			url: '/documents',
+			templateUrl: 'app/components/document/views/documents.html',
+			controller: 'documentsCtrl',
+			controllerAs: 'dc'
+		}).state('documentId', {
+			url: '/documents/:id',
+			templateUrl:  'app/components/document/views/documentView.html',
+			controller: 'documentDetailCtrl',
+			controllerAs: 'dc'
+	    }).state('createDocument', {
+			url: '/createDocument',
+			templateUrl:  'app/components/document/views/documentView.html',
+			controller: 'documentDetailCtrl',
+			controllerAs: 'ddc'
+	    }).state('createQualityDocument', {
+			url: '/createQualityDocument',
+			templateUrl:  'app/components/documentKvalitet/views/documentView.html',
+			controller: 'documentQualityDetailCtrl',
+			controllerAs: 'dqdc'
+	    }).state('qualityDocuments', {
+			url: '/qualityDocuments',
+			templateUrl:  'app/components/documentKvalitet/views/documents.html',
+			controller: 'documentsQualityCtrl',
+			controllerAs: 'qc'
+	    }).state('qualityDocumentId', {
+			url: '/qualityDocuments/:id',
+			templateUrl:  'app/components/documentKvalitet/views/documentView.html',
+			controller: 'documentQualityDetailCtrl',
+			controllerAs: 'dqdc'
 		});
-	}]);
+}]);
 
-	})();
+	})();	
+

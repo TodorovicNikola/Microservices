@@ -1,15 +1,13 @@
 package rs.uns.ac.rs.repositories;
 
 
-import java.util.Date;
+
 import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.geo.Distance;
-import org.springframework.data.geo.Point;
-import org.springframework.data.mongodb.core.geo.GeoJsonPolygon;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import rs.uns.ac.rs.models.User;
