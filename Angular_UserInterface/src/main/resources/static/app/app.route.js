@@ -82,12 +82,18 @@
 			url: '/updObavOIntProv',
 			templateUrl: 'app/components/obavOIntProv/views/updObavOIntProv.html',
 			controller: 'updObavOIntProvCtrl',
+			params: {
+                id: null
+            },
 			controllerAs: 'uoip'
 				
 		}).state('obavOIntProv', {
 			url: '/obavOIntProv',
 			templateUrl: 'app/components/obavOIntProv/views/obavOIntProv.html',
 			controller: 'obavOIntProvCtrl',
+			params: {
+                id: null
+            },
 			controllerAs: 'oip'
 				
 		}).state('allObavOIntProv', {

@@ -1,0 +1,38 @@
+<div style="position:relative; top:30px;">
+	<h2>Obavestenja o internim proverama</h2>
+	<br />
+	<a ui-sref="createObavOIntProv">Kreiraj novo</a>
+
+	<table class="table table-striped table-hover">
+		<tr>
+			<td>Oznaka</td><td>Vrsta Provere</td><td>Org. jedinica</td><td>Po zahtevu broj</td><td>Nadlezni rukovodilac</td><td>Do datuma</td><td></td><td></td>
+
+		</tr>
+		<tr class="trSelectable" ng-repeat="oip in aoip.obavestenja" ng-click="apipip.odaberi(pipip.id)">
+			<td>
+				{{oip.oznaka}}
+			</td>
+			<td>
+				{{oip.vrstaProvere}}
+			</td>
+			<td>
+				{{oip.orgJedinica}}
+			</td>
+			<td>
+				{{oip.poZahtevuBr}}
+			</td>
+			<td>
+				{{oip.nadlezniRuk}}
+			</td>
+			<td>
+				{{oip.datumDo}}
+			</td>
+
+			
+			<td><a href="" ng-click="aoip.izmeni(oip.id)">Izmeni</a></td>
+			<td><a href="" ng-click="aoip.obrisi(oip.id)">Obrisi</a></td>
+			
+		</tr>	
+	</table>
+
+</div>
