@@ -7,7 +7,7 @@
 	   <div class="form-group">
 	     <label for="inputDatum" class="col-lg-2 control-label" >Datum</label>
 	     <div class="col-lg-10">
-	       <input class="form-control" id="inputDatum" type="date" ng-model="cpipip.progrIPlanIntProv.datum">
+	       <input class="form-control" id="inputDatum" type="text" ng-model="upipip.progrIPlanIntProv.datum">
 	     </div>
 	   </div>
 	   
@@ -18,13 +18,13 @@
 	     <div class="col-lg-10">
 	       <div class="radio">
 	         <label>
-	           <input type="radio" name="optionsRadios" id="optionsRadios1" value="REDOVNA" checked="checked" ng-model="cpipip.progrIPlanIntProv.vrstaProvere">
+	           <input type="radio" name="optionsRadios" id="optionsRadios1" value="REDOVNA" checked="checked" ng-model="upipip.progrIPlanIntProv.vrstaProvere">
 	           REDOVNA
 	         </label>
 	       </div>
 	       <div class="radio">
 	         <label>
-	           <input type="radio" name="optionsRadios" id="optionsRadios2" value="VANREDNA" ng-model="cpipip.progrIPlanIntProv.vrstaProvere">
+	           <input type="radio" name="optionsRadios" id="optionsRadios2" value="VANREDNA" ng-model="upipip.progrIPlanIntProv.vrstaProvere">
 	           VANREDNA
 	         </label>
 	       </div>
@@ -36,21 +36,21 @@
 	   <div style="position:relative; left:62px" class="form-group col-xs-6">
 	     <label for="inputBroj" class="col-lg-2 control-label">Broj</label>
 	     <div class="col-lg-10">
-	       <input style="width:50%" class="form-control" id="inputBroj" placeholder="Broj" type="text" ng-model="cpipip.progrIPlanIntProv.broj">
+	       <input style="width:50%" class="form-control" id="inputBroj" placeholder="Broj" type="text" ng-model="upipip.progrIPlanIntProv.broj">
 	     </div>
 	   </div>
 	   
 	   <div style="position:relative; left:25px" class="form-group col-xs-6">
 	     <label  for="inputPoNaloguBR" class="col-lg-2 control-label">Po_nalogu_br.</label>
 	     <div class="col-lg-10">
-	       <input style="position:relative; left:50px" class="form-control" id="inputPoNaloguBR" placeholder="Po nalogu br." type="text" ng-model="cpipip.progrIPlanIntProv.poNaloguBr">
+	       <input style="position:relative; left:50px" class="form-control" id="inputPoNaloguBR" placeholder="Po nalogu br." type="text" ng-model="upipip.progrIPlanIntProv.poNaloguBr">
 	     </div>
 	   </div>
 	   
 	   <div class="form-group">
 	     <label for="inputDatumOdGodine" class="col-lg-2 control-label">od __.__._____. godine</label>
 	     <div class="col-lg-10">
-	       <input class="form-control" id="inputDatumOdGodine" type="date" ng-model="cpipip.progrIPlanIntProv.datumOd">
+	       <input class="form-control" id="inputDatumOdGodine" type="text" ng-model="upipip.progrIPlanIntProv.datumOd">
 	     </div>
 	   </div>
 	   
@@ -59,20 +59,24 @@
 	   <div class="form-group">
 	     <label for="inputNadlezniRuk" class="col-lg-2 control-label">Org. jedinica</label>
 	     <div class="col-lg-10">
-	       <input class="form-control" id="inputNadlezniRuk" placeholder="Org. jedinica" type="text" ng-model="cpipip.progrIPlanIntProv.orgJedinica">
+	       <input class="form-control" id="inputNadlezniRuk" placeholder="Org. jedinica" type="text" ng-model="upipip.progrIPlanIntProv.orgJedinica">
 	     </div>
 	   </div>
 	   
 	   <hr />
+	   
 	   	<table class="table table-striped table-hover" id="pipip">
 	   		<tr>
 	   			<td >Program provere (zahtev, dokumenti)</td><td>Potrebna prisutnost</td><td>Proverivac</td><td>Vreme od</td><td>Vreme do</td>
 	   		</tr>
-	   		<tr>
-	   			<td style="width:650px"> <input class="form-control" id="inputOznaka" type="text"></td> <td style="width:450px"> <input class="form-control" id="inputOznaka" type="text"></td> <td style="width:350px"> <input class="form-control" id="inputOznaka" type="text"></td> <td style="width:80px"> <input class="form-control" id="inputOznaka" type="text"></td> <td style="width:80px"> <input class="form-control" id="inputOznaka" type="text"></td>
+	   		<tr ng-repeat="redTabele in upipip.progrIPlanIntProv.redoviTabele">
+	   			<td style="width:650px"> <input class="form-control" id="inputOznaka" type="text" value="{{ redTabele.progProv }}" /></td> <td style="width:450px"> <input class="form-control" id="inputOznaka" type="text" value="{{ redTabele.potrPris }}" /></td> <td style="width:350px"> <input class="form-control" id="inputOznaka" type="text" value="{{ redTabele.prov }}" /></td> <td style="width:80px"> <input class="form-control" id="inputOznaka" type="text" value="{{ redTabele.vremeOd }}" /></td> <td style="width:80px"> <input class="form-control" id="inputOznaka" type="text" value="{{ redTabele.vremeDo }}" /></td>
 	   		</tr>
 	   	</table>
-	   	<button style="position:relative; float:right; top:5px" class="btn btn-info btn-lg" ng-click="cpipip.dodajRed()">Dodaj red</button>
+	   	<div  style="position:relative; float:right; top:5px">
+	    	<button class="btn btn-info" ng-click="upipip.dodajRed()">Dodaj red</button>
+	    	<button  class="btn btn-warning" ng-click="upipip.ukloniRed()">Ukloni red</button>
+    	</div>
 	   
 	   <hr />
 	
@@ -81,14 +85,14 @@
 	   <div class="form-group">
 	     <label for="inputDatumProvere" class="col-lg-2 control-label" style="position:relative; top:8px" >Datum provere</label>
 	     <div class="col-lg-10">
-	       <input class="form-control" id="inputDatumProvere" type="date" ng-model="cpipip.progrIPlanIntProv.datumProvere">
+	       <input class="form-control" id="inputDatumProvere" type="text" ng-model="upipip.progrIPlanIntProv.datumProvere">
 	     </div>
 	   </div>
 	   
 	       <div class="form-group" >
 	     <label for="inputDatum" class="col-lg-2 control-label"  style="position:relative; top:-15px" >Rok za dostavljanje nalaza</label>
 	     <div class="col-lg-10">
-	       <input class="form-control" id="inputDatum" type="date" ng-model="cpipip.progrIPlanIntProv.rokZaDosNalaza">
+	       <input class="form-control" id="inputDatum" type="text" ng-model="upipip.progrIPlanIntProv.rokZaDosNalaza">
 	     </div>
 	   </div>
 	   </div>
@@ -98,7 +102,7 @@
 	   <div class="form-group" style="position:relative; top:-5px; left:-140px">
 	      <div class="col-lg-10 col-lg-offset-2">
 	        <button type="reset" class="btn btn-default btn-lg">Odustani</button>
-	        <button type="submit" class="btn btn-primary btn-lg" ng-click="cpipip.savePipip()">Potvrdi</button>
+	        <button type="submit" class="btn btn-primary btn-lg" ng-click="upipip.savePipip()">Potvrdi</button>
 	      </div>
 	    </div>
 	  </fieldset>

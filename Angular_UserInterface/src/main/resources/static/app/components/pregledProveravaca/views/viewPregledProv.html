@@ -1,0 +1,15 @@
+<div> 
+ 
+ <h2>Pregled proveravaca</h2>
+    <br />
+    <a ui-sref="createPregledProvCtrl">Izmeni</a>
+    	<table class="table table-striped table-hover" id="pp">
+    		<tr style="font-weight: bold; font-size:118%">
+    			<td>Ime i prezime</td><td>Oblast</td>
+    		</tr>
+    		<tr ng-repeat="auditor in vppc.auditorOverview.auditors">
+    			<td> {{ auditor.imeIPrezime }}</td> <td> {{ auditor.oblast}} </td> 
+    		</tr>
+    	</table>
+    
+ </div>

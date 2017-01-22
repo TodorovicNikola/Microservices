@@ -4,143 +4,93 @@
     <div class="form-group">
       <label for="inputOznaka" class="col-lg-2 control-label">Oznaka</label>
       <div class="col-lg-10">
-        <input class="form-control" id="inputOznaka" placeholder="Oznaka" type="text">
+        <input class="form-control" id="inputOznaka" placeholder="Oznaka" type="text" ng-model="coip.obavOIntProv.oznaka" />
       </div>
     </div>
     
     <div class="form-group">
       <label for="inputDatum" class="col-lg-2 control-label">Datum</label>
       <div class="col-lg-10">
-        <input class="form-control" id="inputDatum" type="date">
+        <input class="form-control" id="inputDatum" type="date" ng-model="coip.obavOIntProv.datum" />
       </div>
     </div>
 
     <div class="form-group">
       <label for="inputVrstaProvere" class="col-lg-2 control-label">Vrsta provere</label>
       <div class="col-lg-10">
-        <input class="form-control" id="inputVrstaProvere" placeholder="Vrsta provere" type="text">
+        <input class="form-control" id="inputVrstaProvere" placeholder="Vrsta provere" type="text" ng-model="coip.obavOIntProv.vrstaProvere" />
       </div>
     </div>
     
     <div class="form-group">
       <label for="inputPoZahtevuBR" class="col-lg-2 control-label">Po zahtevu br.</label>
       <div class="col-lg-10">
-        <input class="form-control" id="inputPoZahtevuBR" placeholder="Po zahtevu br." type="text">
+        <input class="form-control" id="inputPoZahtevuBR" placeholder="Po zahtevu br." type="text" ng-model="coip.obavOIntProv.poZahtevuBr" />
       </div>
     </div>
 
     <div class="form-group">
       <label for="inputOrgJed" class="col-lg-2 control-label">Org. jedinica</label>
       <div class="col-lg-10">
-        <textarea cols="40" rows="5" class="form-control" id="inputOrgJed" placeholder="Org. jedinica"></textarea>
+        <textarea cols="40" rows="5" class="form-control" id="inputOrgJed" placeholder="Org. jedinica" ng-model="coip.obavOIntProv.orgJedinica"></textarea>
       </div>
     </div>
     
     <div class="form-group">
       <label for="inputNadlezniRuk" class="col-lg-2 control-label">Nadlezni ruk.</label>
       <div class="col-lg-10">
-        <input class="form-control" id="inputNadlezniRuk" placeholder="Ime i prezime, funkcija" type="text">
+        <input class="form-control" id="inputNadlezniRuk" placeholder="Ime i prezime, funkcija" type="text" ng-model="coip.obavOIntProv.nadlezniRuk" />
       </div>
     </div>
     
     <div class="form-group">
       <label for="inputDatumOd" class="col-lg-2 control-label">Datum od</label>
       <div class="col-lg-10">
-        <input class="form-control" id="inputDatumOd" type="date">
+        <input class="form-control" id="inputDatumOd" type="date" ng-model="coip.obavOIntProv.datumOd" />
       </div>
     </div>
     
     <div class="form-group">
       <label for="inputDatumDo" class="col-lg-2 control-label">Datum do</label>
       <div class="col-lg-10">
-        <input class="form-control" id="inputDatumdo" type="date">
+        <input class="form-control" id="inputDatumdo" type="date" ng-model="coip.obavOIntProv.datumDo" />
       </div>
     </div>
     
     <div class="form-group" style="position:relative; left:30px">
       <label for="inputZahtDok" class="control-label">Provera ce se izvrsiti po sledecim zahtevima, odnosno dokumentima integrisanog sistema menadzmenta</label>
-        <textarea style="width:80%; position:relative; left:120px" cols="40" rows="5" class="form-control" id="inputZahtDok"></textarea>
+        <textarea style="width:80%; position:relative; left:120px" cols="40" rows="5" class="form-control" id="inputZahtDok" ng-model="coip.obavOIntProv.zahtDok"></textarea>
     </div>
         <br />
         <br />
     <h3>Tim za proveru</h3>
     <br />
-    <div style="position:relative; left:140px; width:90%">
-	    <div class="form-group col-xs-6">
-	         <label for="firstname" class="sr-only"></label>
-	         <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
-	                title="Enter first name"
-	                placeholder="Ime i prezime"/>
-	     </div>
-	
-	     <div class="form-group col-xs-6">
-	         <label for="lastname" class="sr-only"></label>
-	         <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
-	                title="Enter last name"
-	                placeholder="Funkcija"/>
-	     </div>
-	     <br />
-	    <div class="form-group col-xs-6">
-	         <label for="firstname" class="sr-only"></label>
-	         <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
-	                title="Enter first name"
-	                placeholder="Ime i prezime"/>
-	     </div>
-	
-	     <div class="form-group col-xs-6">
-	         <label for="lastname" class="sr-only"></label>
-	         <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
-	                title="Enter last name"
-	                placeholder="Funkcija"/>
-	     </div>
-	     <br />
-	    <div class="form-group col-xs-6">
-	         <label for="firstname" class="sr-only"></label>
-	         <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
-	                title="Enter first name"
-	                placeholder="Ime i prezime"/>
-	     </div>
-	
-	     <div class="form-group col-xs-6">
-	         <label for="lastname" class="sr-only"></label>
-	         <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
-	                title="Enter last name"
-	                placeholder="Funkcija"/>
-	     </div>
-	     <br />
-	    <div class="form-group col-xs-6">
-	         <label for="firstname" class="sr-only"></label>
-	         <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
-	                title="Enter first name"
-	                placeholder="Ime i prezime"/>
-	     </div>
-	
-	     <div class="form-group col-xs-6">
-	         <label for="lastname" class="sr-only"></label>
-	         <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
-	                title="Enter last name"
-	                placeholder="Funkcija"/>
-	     </div>
-	     <br />
-	    <div class="form-group col-xs-6">
-	         <label for="firstname" class="sr-only"></label>
-	         <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
-	                title="Enter first name"
-	                placeholder="Ime i prezime"/>
-	     </div>
-	
-	     <div class="form-group col-xs-6">
-	         <label for="lastname" class="sr-only"></label>
-	         <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
-	                title="Enter last name"
-	                placeholder="Funkcija"/>
-	     </div>
-    </div>
+    <table>
+    	<tr>
+    		<td>Ime i prezime</td><td>Funkcija</td>
+    	</tr>
+    	<tr>
+    		<td>{{ coip.proveravac1.imeIPrezime }}</td><td><input class="form-control" id="inputNadlezniRuk" placeholder="Funkcija" type="text" ng-model="coip.proveravac1.funkcija" /></td>
+    	</tr>
+    	<tr>
+    		<td>{{ coip.proveravac2.imeIPrezime }}</td><td><input class="form-control" id="inputNadlezniRuk" placeholder="Funkcija" type="text" ng-model="coip.proveravac2.funkcija" /></td>
+    	</tr>
+    	<tr>
+    		<td>{{ coip.proveravac3.imeIPrezime }}</td><td><input class="form-control" id="inputNadlezniRuk" placeholder="Funkcija" type="text" ng-model="coip.proveravac3.funkcija" /></td>
+    	</tr>
+    	<tr>
+    		<td>{{ coip.proveravac4.imeIPrezime }}</td><td><input class="form-control" id="inputNadlezniRuk" placeholder="Funkcija" type="text" ng-model="coip.proveravac4.funkcija" /></td>
+    	</tr>
+    	<tr>
+    		<td>{{ coip.proveravac5.imeIPrezime }}</td><td><input class="form-control" id="inputNadlezniRuk" placeholder="Funkcija" type="text" ng-model="coip.proveravac5.funkcija" /></td>
+    	</tr>
+    	
+    </table>
     
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <button type="reset" class="btn btn-default btn-lg">Cancel</button>
-        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        <button type="reset" class="btn btn-default btn-lg">Ponisti</button>
+        <button type="submit" class="btn btn-primary btn-lg" ng-click="coip.sacuvaj()">Potvrdi</button>
       </div>
     </div>
   </fieldset>

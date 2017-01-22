@@ -1,0 +1,33 @@
+<div style="position:relative; top:30px;">
+	<h2>Programi i planovi internih provera</h2>
+	<br />
+	<a ui-sref="crProgIPlIntProvCtrl">Dodaj novi</a>
+
+	<table class="table table-striped table-hover">
+		<tr>
+			<td>Broj</td><td>Vrsta Provere</td><td>Org. jedinica</td><td>Od datuma</td><td>Datum provere</td><td></td><td></td>
+
+		</tr>
+		<tr class="trSelectable" ng-repeat="pipip in apipip.programi" ng-click="apipip.odaberi(pipip.id)">
+			<td>
+				{{pipip.broj}}
+			</td>
+			<td>
+				{{pipip.vrstaProvere}}
+			</td>
+			<td>
+				{{pipip.orgJedinica}}
+			</td>
+			<td>
+				{{pipip.datumOd}}
+			</td>
+			<td>
+				{{pipip.datumProvere}}
+			</td>
+			<td><a href="" ng-click="apipip.izmeni(pipip.id)">Izmeni</a></td>
+			<td><a href="" ng-click="apipip.obrisi(pipip.id)">Obrisi</a></td>
+			
+		</tr>	
+	</table>
+
+</div>

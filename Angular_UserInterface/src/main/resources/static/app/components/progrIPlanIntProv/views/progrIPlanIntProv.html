@@ -1,0 +1,35 @@
+<div>
+
+	   <h2>Program i plan interne provere</h2>
+	   
+		<dl>
+			<dt>Datum: {{ pipip.progrIPlanIntProv.datum }}</dt>
+			<dt>Vrsta provere: {{ pipip.progrIPlanIntProv.vrstaProvere }}</dt>
+			<dt>Broj: {{ pipip.progrIPlanIntProv.broj }}</dt>
+			<dt>Po nalogu broj: {{ pipip.progrIPlanIntProv.poNaloguBr }}</dt>
+			<dt>Datum od: {{ pipip.progrIPlanIntProv.datumOd }}</dt>
+			<dt>Organizaciona jedinica: {{ pipip.progrIPlanIntProv.orgJedinica }}</dt>
+		</dl>
+		
+		<hr />
+		
+	   	<table class="table table-striped table-hover" id="pipip">
+	   		<tr>
+	   			<td >Program provere (zahtev, dokumenti)</td><td>Potrebna prisutnost</td><td>Proverivac</td><td>Vreme od</td><td>Vreme do</td>
+	   		</tr>
+	   		<tr ng-repeat="redTabele in pipip.progrIPlanIntProv.redoviTabele">
+	   			<td style="width:650px"> {{ redTabele.progProv }} </td> <td style="width:450px"> {{ redTabele.potrPris  }} </td> <td style="width:350px"> {{ redTabele.prov }} </td> <td style="width:80px"> {{ redTabele.vremeOd }} </td> <td style="width:80px"> {{ redTabele.vremeDo }} </td>
+	   		</tr>
+	   	</table>
+	   	
+	   
+	   <hr />
+	   
+	   		<dl>
+			<dt>Datum provere: {{ pipip.progrIPlanIntProv.datumProvere }}</dt>
+			<dt>Rok za dostavljanje nalaza: {{ pipip.progrIPlanIntProv.rokZaDosNalaza }}</dt>
+
+		</dl>
+	   
+	   
+</div>

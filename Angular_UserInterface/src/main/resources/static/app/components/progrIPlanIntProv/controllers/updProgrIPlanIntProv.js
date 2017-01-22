@@ -3,32 +3,53 @@
 	
 	angular
 		.module("SMPuOS")
-		.controller('crProgIPlIntProvCtrl', crProgIPlIntProvCtrl);
+		.controller('updProgIPlanIntProvCtrl', updProgIPlanIntProvCtrl);
 	
-	crProgIPlIntProvCtrl.$inject = ['$http'];
-	function crProgIPlIntProvCtrl($http){
-		var cpipip=this;
+	updProgIPlanIntProvCtrl.$inject = ['$http', '$stateParams'];
+	function updProgIPlanIntProvCtrl($http, $stateParams){
+		var upipip=this;
 		
-		cpipip.progrIPlanIntProv = {};
-		cpipip.progrIPlanIntProv.redoviTabele = [];
+		upipip.progrIPlanIntProv = {};
+		upipip.progrIPlanIntProv.redoviTabele = [];
 		
-		cpipip.progrIPlanIntProv.id = null;
+		$http({
+			method: 'GET',
+			url: '/check-programme/get?id=' + $stateParams.id,
+		}).success(function(response){
+
+			upipip.progrIPlanIntProv = response;
+			console.log(response);
+
+		})
+		.error(function(error){
+			alert("Error");
+			console.log(error);
+		});
+			
 		
-		cpipip.dodajRed = function() {
+		upipip.dodajRed = function() {
 		    var table = document.getElementById("pipip");
 		    var row = table.insertRow(-1);
 		    row.innerHTML = "<td style=\"width:650px\"> <input class=\"form-control\" id=\"inputOznaka\" type=\"text\"></td> <td style=\"width:450px\"> <input class=\"form-control\" id=\"inputOznaka\" type=\"text\"></td> <td style=\"width:350px\"> <input class=\"form-control\" id=\"inputOznaka\" type=\"text\"></td> <td style=\"width:80px\"> <input class=\"form-control\" id=\"inputOznaka\" type=\"text\"></td> <td style=\"width:80px\"> <input class=\"form-control\" id=\"inputOznaka\" type=\"text\"></td>";
 		}
 		
-		cpipip.savePipip = function(){
+		upipip.ukloniRed = function () {
+		    var table = document.getElementById("pipip");
+		    var row = table.deleteRow(-1);
+		    
+		};
+		
+		upipip.savePipip = function(){
 			
-			if( !cpipip.progrIPlanIntProv.datum || !cpipip.progrIPlanIntProv.vrstaProvere || !cpipip.progrIPlanIntProv.broj || !cpipip.progrIPlanIntProv.poNaloguBr || !cpipip.progrIPlanIntProv.datumOd || !cpipip.progrIPlanIntProv.orgJedinica || !cpipip.progrIPlanIntProv.datumProvere || !cpipip.progrIPlanIntProv.rokZaDosNalaza){
+			if( !upipip.progrIPlanIntProv.datum || !upipip.progrIPlanIntProv.vrstaProvere || !upipip.progrIPlanIntProv.broj || !upipip.progrIPlanIntProv.poNaloguBr || !upipip.progrIPlanIntProv.datumOd || !upipip.progrIPlanIntProv.orgJedinica || !upipip.progrIPlanIntProv.datumProvere || !upipip.progrIPlanIntProv.rokZaDosNalaza){
 				alert("Sva polja moraju biti popunjena!");
 				
 				return false;
 			}
 			
 			var table = document.getElementById("pipip");
+			
+			upipip.progrIPlanIntProv.redoviTabele = [];
 			
 			for (var i = 1, row; row = table.rows[i]; i++) {
 				var tempTableRow = {};
@@ -40,11 +61,11 @@
 				
 				if(tempTableRow.progProv == "" || tempTableRow.potrPris == "" || tempTableRow.prov == "" || tempTableRow.vremeOd == "" || tempTableRow.vremeDo == "" ){
 					alert("Sva polja moraju biti popunjena!");
-					cpipip.progrIPlanIntProv.redoviTabele = [];
+					upipip.progrIPlanIntProv.redoviTabele = [];
 					return false;					
 				}
 								
-				cpipip.progrIPlanIntProv.redoviTabele.push(tempTableRow);
+				upipip.progrIPlanIntProv.redoviTabele.push(tempTableRow);
 			}
 			
 			$http({
@@ -53,10 +74,10 @@
 			        'Content-Type': 'application/json' 
 			    },
 				method: 'POST',
-				url: '/check-programme/add',
-				data:cpipip.progrIPlanIntProv
+				url: '/check-programme/update',
+				data:upipip.progrIPlanIntProv
 			}).success(function(response){
-				cpipip.data=response;
+				upipip.data=response;
 
 				console.log(response);
 
@@ -68,6 +89,9 @@
 			});
 			
 		}
+		
+		
+		
 	}
 	
 
