@@ -4,6 +4,7 @@
 
 	var documentsQualityController = [ '$scope', '$http','$location','$stateParams',function ($scope, $http,$location,$stateParams){
 
+
 		$scope.getReadableDateTime=function(milliseconds)
 		{
 			if (!milliseconds)

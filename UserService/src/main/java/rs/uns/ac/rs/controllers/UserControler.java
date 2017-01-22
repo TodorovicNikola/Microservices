@@ -113,6 +113,22 @@ public class UserControler extends AbstractRESTController<User, String>{
 		return ((User)(userService.getOneUserByFirstAndLastName(firstName, lastName))).getRole().equals(role);
 	}
 	
+	@RequestMapping(value="/checkUserRoleByToken",method=RequestMethod.GET)
+	public Boolean checkUserRoleByToken(@RequestParam("token") String token,@RequestParam("role") String role)
+	{
+		System.out.println("USER SERVICE CHECK ROLE by token je " + token);
+		System.out.println("role je " + role);
+		return userService.getUserRoleFromToken(token).equals(role);
+	}
+	
+	@RequestMapping(value="/checkUserIdFromToken",method=RequestMethod.GET)
+	public Boolean checkiUserIdFromToken(@RequestParam("token") String token,@RequestParam("id") String id)
+	{
+		System.out.println(" U USER CONTOLLER token id " + userService.getUserIdFromToken(token) + " id " + id);
+		return userService.getUserIdFromToken(token).equals(id);
+	}
+	
+	
 
 	
 }

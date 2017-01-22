@@ -23,6 +23,8 @@ loginService.factory('loginService', ['jwtHelper','$http','$localStorage',functi
 					currentUser.role = tokenPayload.role;
 					currentUser.firstName=tokenPayload.firstName;
 					currentUser.lastName=tokenPayload.lastName;
+					currentUser.id=tokenPayload.id;
+					console.log(currentUser);
 					$localStorage.currentUser = currentUser;
 					//$localStorage.token='Bearer '+response['token'];
 					$localStorage.token=response['token'];

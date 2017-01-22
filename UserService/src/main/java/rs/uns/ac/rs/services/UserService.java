@@ -59,6 +59,7 @@ public class UserService extends AbstractCRUDService<User, String>{
 			payload.put("firstName", user.getFirstName());
 			payload.put("lastName",user.getLastName());
 			payload.put("role", user.getRole());
+			payload.put("id", user.getId());
 			String jwt = (Jwts.builder().setPayload(payload.toJSONString()).signWith(SignatureAlgorithm.HS512, smpos).compact());
 			JSONObject retVal=new JSONObject();
 			retVal.put("token",jwt);
@@ -80,6 +81,16 @@ public class UserService extends AbstractCRUDService<User, String>{
 		String key = new String(encodedBytes);
 		String role= (String) Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody().get("role");
 		return role;
+		
+	}
+	
+	public String getUserIdFromToken(String token)
+	{
+		byte[] encodedBytes = Base64.encodeBase64("smpos".getBytes());
+		String key = new String(encodedBytes);
+		String id= (String) Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody().get("id");
+		System.out.println("ID j e " + id);
+		return id;
 		
 	}
 	
