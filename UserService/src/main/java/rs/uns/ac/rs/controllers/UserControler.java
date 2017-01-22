@@ -28,22 +28,22 @@ import rs.uns.ac.rs.services.UserService;
 
 @RestController
 public class UserControler extends AbstractRESTController<User, String>{
-	
+
 	@Autowired
 	Environment environment;
-	
+
 	private UserService userService;
-	
+
 
 	@Autowired
 	public UserControler(UserService userService) {
 		super(userService);
 		this.userService = userService;
 	}
-	
+
 	@RequestMapping("/initUsers")
 	public String initUsers(){
-		
+
 		System.out.println("Init users");
 		User nikola=new User();
 		nikola.setFirstName("Nikola");
@@ -51,36 +51,33 @@ public class UserControler extends AbstractRESTController<User, String>{
 		nikola.setPassword("nikola");
 		nikola.setMail("nikola@gmail.com");
 		userService.save(nikola);
-		
+
 		User aleksa=new User();
 		aleksa.setFirstName("Aleksa");
 		aleksa.setLastName("Mirkovic");
 		aleksa.setPassword("aleksa");
 		aleksa.setMail("aleksa@gmail.com");
 		userService.save(aleksa);
-		
+
 		return "Success";
-		
-		
+
+
 	}
-	
-	
-	
+
+
+
 	@RequestMapping(value="/users",method=RequestMethod.GET)
 	public List<User> getUsers(@RequestHeader("Authorization") String authorization)
 	{
-		System.out.println("getUsers method authorization token : " + authorization);
 		return userService.getAllUsers();
 	}
 
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public @ResponseBody JSONObject login(
 			@RequestParam(name = "mail") String mail,
 			@RequestParam(name = "password") String password){
-		
-		System.out.println("Login users");
-		
+
 		User loggedIn= userService.login(mail, password);
 		if (loggedIn!=null)
 		{
@@ -88,47 +85,65 @@ public class UserControler extends AbstractRESTController<User, String>{
 		}
 		return null;
 	}
-	
-	
+
+
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
 	public @ResponseBody Object registerUser(@RequestBody @Valid  User user,@RequestHeader("Authorization") String authorization){
-		
+
 		//check if role is admin
 		String role=userService.getUserRoleFromToken(authorization);
 		if (!role.equals("admin"))
 		{
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
-		System.out.println(user.getFirstName());
 		if (userService.registerUser(user)!=null)
 			return new ResponseEntity<>(HttpStatus.OK);
 		return null;
-		
+
 	}
-	
+
 	@RequestMapping(value="/checkUserRole",method=RequestMethod.GET)
 	public Boolean checkUserRole(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("role") String role)
 	{
-		System.out.println("USER SERVICE CHECK ROLE");
-		return ((User)(userService.getOneUserByFirstAndLastName(firstName, lastName))).getRole().equals(role);
-	}
 	
+		if (userService.getOneUserByFirstAndLastName(lastName, firstName)==null)
+		{
+			if(userService.getOneUserByFirstAndLastName(firstName, lastName)==null)
+			{
+				return false;
+				
+			}
+			else
+			{
+				User u2=(User)(userService.getOneUserByFirstAndLastName(firstName, lastName));
+				return u2.getRole().equals(role);
+			}
+		}
+		else
+		{
+			User u1=(User)(userService.getOneUserByFirstAndLastName(lastName, firstName));
+			return u1.getRole().equals(role);
+		}
+
+	
+
+	}
+
 	@RequestMapping(value="/checkUserRoleByToken",method=RequestMethod.GET)
 	public Boolean checkUserRoleByToken(@RequestParam("token") String token,@RequestParam("role") String role)
 	{
-		System.out.println("USER SERVICE CHECK ROLE by token je " + token);
-		System.out.println("role je " + role);
+
 		return userService.getUserRoleFromToken(token).equals(role);
 	}
-	
+
 	@RequestMapping(value="/checkUserIdFromToken",method=RequestMethod.GET)
 	public Boolean checkiUserIdFromToken(@RequestParam("token") String token,@RequestParam("id") String id)
 	{
 		System.out.println(" U USER CONTOLLER token id " + userService.getUserIdFromToken(token) + " id " + id);
 		return userService.getUserIdFromToken(token).equals(id);
 	}
-	
-	
 
-	
+
+
+
 }

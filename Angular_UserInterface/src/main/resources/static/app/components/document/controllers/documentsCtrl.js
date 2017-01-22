@@ -1,8 +1,8 @@
 
 (function (angular) {
-	var documentsModule = angular.module('app.documentsCtrl', []);
+	var documentsModule = angular.module('app.documentsCtrl', ['ngStorage']);
 
-	var documentsController = [ '$scope', '$http','$location','$stateParams',function ($scope, $http,$location,$stateParams){
+	var documentsController = [ '$scope', '$http','$location','$stateParams','$localStorage',function ($scope, $http,$location,$stateParams,$localStorage){
 
 		$scope.getReadableDateTime=function(milliseconds)
 		{
@@ -15,7 +15,7 @@
 
 			$http({
 				method: 'GET',
-				url: '/document-task-service/documents'
+				url: '/document-task-service/documents?firstName='+$localStorage.currentUser.firstName+'&lastName='+$localStorage.currentUser.lastName+"&role="+$localStorage.currentUser.role,
 			}).success(function(response){
 				$scope.data=response;
 				console.log(response);

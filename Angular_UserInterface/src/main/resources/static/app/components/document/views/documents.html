@@ -3,7 +3,7 @@
 	<h4>Zadaci za izradu dokumenata </h4>
 	<br>
 	
-<a class="btn btn-primary" a href="#createDocument"  ng-disabled="!(getCurrentUser().role=='Predstavnik')">Kreiraj zadatak za izradu dokumenta</a>
+<a class="btn btn-primary" href="#createDocument"  ng-disabled="!(getCurrentUser().role=='Predstavnik')">Kreiraj zadatak za izradu dokumenta</a>
 		<table class="table">
 			<thead>
 				<tr>
@@ -30,7 +30,7 @@
 				<td>{{getReadableDateTime(doc.taskDueDate)}}</td>
 				<td>{{doc.taskCreatedBy}}</td>
 				<td>{{getReadableDateTime(doc.taskDate)}}</td>
-				<td><button class="btn-primary" ng-click=deleteDoc(doc.id,$index)>Delete</button>
+				<td><button class="btn-primary" ng-click=deleteDoc(doc.id,$index) ng-show="getCurrentUser().role=='Predstavnik'">Delete</button>
 			</tr>
 			</tbody>
 		</table>

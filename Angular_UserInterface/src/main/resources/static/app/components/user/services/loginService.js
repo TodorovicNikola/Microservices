@@ -15,10 +15,7 @@ loginService.factory('loginService', ['jwtHelper','$http','$localStorage',functi
 			if (response) {
 				console.log(response);			
 				var tokenPayload = jwtHelper.decodeToken(response['token']);
-				//console.log("Token payload je  ");
-				//console.log(tokenPayload); 
 				if(tokenPayload.role){
-					//console.log("Role in payload true")
 					var currentUser={};
 					currentUser.role = tokenPayload.role;
 					currentUser.firstName=tokenPayload.firstName;

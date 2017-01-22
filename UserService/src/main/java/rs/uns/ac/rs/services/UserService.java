@@ -63,13 +63,12 @@ public class UserService extends AbstractCRUDService<User, String>{
 			String jwt = (Jwts.builder().setPayload(payload.toJSONString()).signWith(SignatureAlgorithm.HS512, smpos).compact());
 			JSONObject retVal=new JSONObject();
 			retVal.put("token",jwt);
-			System.out.println("jwt " + jwt);
 
 			return retVal;
 		}
 		catch (Exception e)
 		{
-			System.out.println("null je nesto vrv");
+
 			return null;
 		}
 
@@ -89,7 +88,6 @@ public class UserService extends AbstractCRUDService<User, String>{
 		byte[] encodedBytes = Base64.encodeBase64("smpos".getBytes());
 		String key = new String(encodedBytes);
 		String id= (String) Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody().get("id");
-		System.out.println("ID j e " + id);
 		return id;
 		
 	}
@@ -100,7 +98,15 @@ public class UserService extends AbstractCRUDService<User, String>{
 	
 	public User getOneUserByFirstAndLastName(String firstName,String lastName)
 	{
-		return userRepository.findByFirstNameAndLastName(firstName, lastName).get(0);
+		List<User> users=userRepository.findByFirstNameAndLastName(firstName, lastName);
+		if (users==null || users.size()==0)
+		{
+			return null;
+		}
+		else
+		{
+			return users.get(0);
+		}
 	}
 
 

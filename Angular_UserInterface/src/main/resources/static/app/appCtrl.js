@@ -5,7 +5,6 @@
 
 		
 		$scope.currentUser = $localStorage.currentUser;
-		console.log("here " + $scope.currentUser);
 		$scope.logout=function()
 		{
 			loginService.logout();
@@ -13,12 +12,8 @@
 		}
 		$scope.getCurrentUser=function()
 		{
-			console.log($localStorage.currentUser);
 			return $localStorage.currentUser;
 		}
-
-		
-
 
 	}];
 	appModule.controller('appController', appController);
