@@ -2,7 +2,7 @@
 	<div class="docsQuality">
 	<h4>Pregled dokumenata sistema upravljanja kvalitetom : {{doc.docMark}} </h4><br>
 <br>
-	<a class="btn btn-primary" a href="#createQualityDocument">Kreiraj pregled dokumenata sistema upravljanja kvalitetom</a>
+	<a class="btn btn-primary" a href="#createQualityDocument" ng-disabled="!(getCurrentUser().role=='Sekretar')">Kreiraj pregled dokumenata sistema upravljanja kvalitetom</a>
 		<table class="table">
 			<thead>
 				<tr>
