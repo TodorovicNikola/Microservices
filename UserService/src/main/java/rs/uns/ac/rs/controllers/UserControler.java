@@ -139,7 +139,6 @@ public class UserControler extends AbstractRESTController<User, String>{
 	@RequestMapping(value="/checkUserIdFromToken",method=RequestMethod.GET)
 	public Boolean checkiUserIdFromToken(@RequestParam("token") String token,@RequestParam("id") String id)
 	{
-		System.out.println(" U USER CONTOLLER token id " + userService.getUserIdFromToken(token) + " id " + id);
 		return userService.getUserIdFromToken(token).equals(id);
 	}
 

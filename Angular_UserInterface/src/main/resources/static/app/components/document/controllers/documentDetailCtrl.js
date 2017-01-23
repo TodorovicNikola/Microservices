@@ -1,7 +1,22 @@
 
 (function (angular) {
 	var documentDetailModule = angular.module('app.documentDetailCtrl', ['ngStorage']);
-
+	angular.module('app.documentDetailCtrl').directive("formatDate", function() {
+	    return {
+	        require: 'ngModel',
+	        link: function(scope, elem, attr, modelCtrl) {
+	            modelCtrl.$formatters.push(function(modelValue) {
+	                if (modelValue){
+	                    return new Date(modelValue);
+	                }
+	                else {
+	                    return null;
+	                }
+	            });
+	        }
+	    };
+	});
+	
 	var documentDetailController = [ '$scope', '$http','$location','$stateParams','$localStorage',function ($scope, $http,$location,$stateParams,$localStorage){
 
 		/*$scope.writeAuthor=function()
@@ -83,7 +98,7 @@
 
 		$scope.dummyDatum=function()
 		{
-			$scope.dueDateView="2018-06-29T16:52:48.000Z";
+			//$scope.dueDateView="2018-06-29T16:52:48.000Z";
 		}
 
 		$scope.checkDoc=function()
@@ -155,8 +170,7 @@
 		$scope.updateDocument=function()
 		{
 			$scope.composeArrayFields();
-			$scope.doc.taskDueDate=$scope.dueDateView;
-			$scope.doc.taskDueDate="1485011275315";
+			
 			if (!($scope.checkDoc()))
 			{
 				return;
@@ -181,7 +195,7 @@
 		$scope.saveDocument=function()
 		{
 			$scope.composeArrayFields();
-			$scope.doc.taskDueDate=$scope.dueDateView;
+			
 			$scope.doc.status==null?$scope.doc.status="pocet":$scope.doc.status;
 			if (!($scope.checkDoc()))
 			{
@@ -218,8 +232,8 @@
 			}).success(function(response){
 				$scope.doc=response;
 				$scope.deComposeArrayFields();
-				$scope.dueDateView=$scope.getReadableDateTime($scope.doc.taskDueDate);
-				$scope.dateView=$scope.getReadableDateTime($scope.doc.taskDate);
+				//$scope.dueDateView=$scope.getReadableDateTime($scope.doc.taskDueDate);
+				//$scope.dateView=$scope.getReadableDateTime($scope.doc.taskDate);
 				$scope.allowEditing=($scope.doc.status=='pocet');
 
 				//$scope.doc.taskDateView=$scope.getReadableDateTime()

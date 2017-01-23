@@ -22,8 +22,6 @@
 
 		$scope.saveUser=function()
 		{
-			console.log($scope.user.role);
-
 			$http({
 				method: 'POST',
 				url: '/user-service/registerUser',

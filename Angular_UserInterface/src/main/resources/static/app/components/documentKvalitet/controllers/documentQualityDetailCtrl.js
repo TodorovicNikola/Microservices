@@ -1,7 +1,21 @@
 
 (function (angular) {
 	var documentQualityDetailModule = angular.module('app.documentQualityDetailCtrl', ['ngStorage']);
-
+	angular.module('app.documentQualityDetailCtrl').directive("formatDate", function() {
+	    return {
+	        require: 'ngModel',
+	        link: function(scope, elem, attr, modelCtrl) {
+	            modelCtrl.$formatters.push(function(modelValue) {
+	                if (modelValue){
+	                    return new Date(modelValue);
+	                }
+	                else {
+	                    return null;
+	                }
+	            });
+	        }
+	    };
+	});
 	var documentQualityDetailController = [ '$scope', '$http','$location','$stateParams','$localStorage','$compile',function ($scope, $http,$location,$stateParams,$localStorage,$compile){
 
 		var documentId=$stateParams.id;
@@ -16,7 +30,7 @@
 			'<td><input class="form-control" ng-model="doc.docItems['+count+'].itemMark" ng-disabled="doc.docItems['+count+'].id || getCurrentUser().role!='+"'Sekretar'"+'"></td>'+
 			'<td><input class="form-control" ng-model="doc.docItems['+count+'].itemTitle" ng-disabled="doc.docItems['+count+'].id || getCurrentUser().role!='+"'Sekretar'"+'"></td>'+
 			'<td><input class="form-control" ng-model="doc.docItems['+count+'].itemRelease" ng-disabled="getCurrentUser().role!='+"'Sekretar'"+'"></td>'+
-			'<td><input class="form-control" ng-model="doc.docItems['+count+'].itemDate" ng-disabled="getCurrentUser().role!='+"'Sekretar'"+'"></td>'+
+			'<td><input class="form-control"  type="date" format-date ng-model="doc.docItems['+count+'].itemDate" ng-disabled="getCurrentUser().role!='+"'Sekretar'"+'"></td>'+
 			'<td><input class="form-control" ng-model="doc.docItems['+count+'].itemUsers" ng-disabled="doc.docItems['+count+'].id|| getCurrentUser().role!='+"'Sekretar'"+'"></td>'+
 			'<td><button class="btn-primary" type="button" ng-click="deleteItem('+count+')" ng-disabled="getCurrentUser().role!='+"'Sekretar'"+'">Brisanje</button></td>';
 			console.log(html);
@@ -92,7 +106,7 @@
 		$scope.updateDocument=function()
 		{
 
-			$scope.doc.docDate="1485011275315";
+			//$scope.doc.docDate="1485011275315";
 			if (!$scope.documentQualityOk())
 			{
 				return;
@@ -120,8 +134,9 @@
 
 		$scope.saveDocument=function()
 		{
+			console.log($scope.doc);
 			$scope.doc.userId=$scope.getCurrentUser().id;
-			$scope.doc.docDate="1485011275315";
+			//$scope.doc.docDate="1485011275315";
 			if (!($scope.documentQualityOk()))
 			{
 				return;

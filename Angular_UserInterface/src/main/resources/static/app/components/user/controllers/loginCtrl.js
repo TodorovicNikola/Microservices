@@ -13,14 +13,12 @@
 		};
 		$scope.login=function () {
 
-			console.log('login');
 			loginService.login($scope.user.email,$scope.user.password,loginCbck);
 		};
 		function loginCbck(success) {
 			if (success) {
-
 				console.log(loginService.getCurrentUser());
-				window.location = "#/users";
+				window.location = "#/createPregledProv";
 			}
 			else{
 				alert('failure!');

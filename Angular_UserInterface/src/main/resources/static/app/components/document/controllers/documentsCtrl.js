@@ -31,10 +31,8 @@
 				method: 'DELETE',
 				url: '/document-task-service/documents/'+documentId
 			}).success(function(response){
-				
 				console.log(response);
 				if (response){
-					
 					$scope.data.splice(rbr,1);
 				}
 			})
